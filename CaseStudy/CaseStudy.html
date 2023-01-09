@@ -57,6 +57,7 @@
                 <th>Email</th>
                 <th>Class</th>
                 <th>Role</th>
+                <th>Actions</th>
             </tr>
         </thead>
     </table>
@@ -93,6 +94,7 @@
                 <th>Email</th>
                 <th>Class</th>
                 <th>Role</th>
+                <th>Actions</th>
             </tr>`
             for (let i = 0; i < data.length; i++) {
                 table += ` <tr>
@@ -101,7 +103,9 @@
                 <td>${data[i].Email}</td>
                 <td>${data[i].Class}</td>
                 <td>${data[i].Role}</td>
-                
+                <th>
+            <button>Delete</button>
+        </th>
             </tr>`
             
         }
