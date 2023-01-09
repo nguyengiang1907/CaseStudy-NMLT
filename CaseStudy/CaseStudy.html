@@ -63,7 +63,7 @@
         </thead>
     </table>
     <script>
-        var data = []
+        var data = [];
 
         function add() {
             var item_id = document.getElementById("id").value;
@@ -73,57 +73,65 @@
             var item_role = document.getElementById("role").value;
 
             var item = {
-                Id: item_id,
-                Name: item_name,
-                Email: item_email,
-                Class: item_class,
-                Role: item_role,
+                id: item_id,
+                name: item_name,
+                email: item_email,
+                class: item_class,
+                role: item_role,
 
             }
-            let index = data.findIndex((c) => c.Id == item.Id)
+            let index = data.findIndex((c) => c.id == item.id);
             if (index >= 0) {
-                data.splice(index, 1, item)
+                data.splice(index, 1, item);
             } else {
-                data.unshift(item)
+                data.unshift(item);
             }
-            render()
+            render();
+            clear();
         }
         function render() {
             table = ` <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Class</th>
-                <th>Role</th>
-                <th>Actions</th>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>class</th>
+                <th>role</th>
+                <th>actions</th>
             </tr>`
             for (let i = 0; i < data.length; i++) {
                 table += ` <tr>
-                <td>${data[i].Id}</td>
-                <td>${data[i].Name}</td>
-                <td>${data[i].Email}</td>
-                <td>${data[i].Class}</td>
-                <td>${data[i].Role}</td>
+                <td>${data[i].id}</td>
+                <td>${data[i].name}</td>
+                <td>${data[i].email}</td>
+                <td>${data[i].class}</td>
+                <td>${data[i].role}</td>
                 <th>
-                    <button onclick="deleteItem(${data[i].Id})">Delete</button>
+                    <button onclick="deleteItem(${data[i].id})">Delete</button>
                 
                         </th>
             </tr>`
 
             }
-            document.getElementById("render").innerHTML = table
-           
+            document.getElementById("render").innerHTML = table;
 
-            }
-         function deleteItem(x) {         
-             for(i=0;i<data.length;i++){
-                if(data[i].Id==x){
-                    data.splice(i,1)
-                    render()
+
+        }
+        function clear() {
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("class").value = "";
+            document.getElementById("role").value = "";
+        }
+        function deleteItem(x) {
+            for (i = 0; i < data.length; i++) {
+                if (data[i].id == x) {
+                    data.splice(i, 1);
+                    render();
                 }
-             }
+            }
 
-         }
+        }
 
 
     </script>
