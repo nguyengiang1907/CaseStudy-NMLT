@@ -115,7 +115,13 @@
            
 
             }
-         function deleteItem() {         
+         function deleteItem(x) {         
+             for(i=0;i<data.length;i++){
+                if(data[i].Id==x){
+                    data.splice(i,1)
+                    render()
+                }
+             }
 
          }
 
