@@ -10,7 +10,7 @@
     
 </head>
 
-<body>
+<body style="background-color: rgb(136, 223, 223);">
     <h1>Manager User</h1>
     <div>
         <div>
@@ -48,6 +48,17 @@
         <br>
         <button class="add" onclick="add()">add</button>
     </div>
+    <table id="render">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+    </table>
     <script>
         var data = []
 
@@ -57,7 +68,46 @@
             var item_email = document.getElementById("email").value;
             var item_class = document.getElementById("class").value;
             var item_role = document.getElementById("role").value;
+
+                var item = {
+                Id: item_id,
+                Name: item_name,
+                Email: item_email,
+                Class: item_class,
+                Role: item_role,
+            
+            }
+            let index = data.findIndex((c)=>c.Id==item.Id)
+            if (index >=0){
+                data.splice(index,1,item)
+            }else{
+                data.unshift(item)
+            }
+        render()
         }
+        function render(){
+            table =` <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Class</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>`
+            for (let i = 0; i < data.length; i++) {
+                table += ` <tr>
+                <td>${data[i].Id}</td>
+                <td>${data[i].Name}</td>
+                <td>${data[i].Email}</td>
+                <td>${data[i].Class}</td>
+                <td>${data[i].Role}</td>
+                
+            </tr>`
+            
+        }
+            document.getElementById("render").innerHTML = table
+
+    }
         
     </script>
 
